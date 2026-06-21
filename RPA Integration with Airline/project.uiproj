@@ -1,0 +1,6 @@
+{
+  "ProjectType": "Process",
+  "Name": "RPA Integration with Airline",
+  "Description": null,
+  "MainFile": "Main.xaml"
+}

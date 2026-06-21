@@ -1,0 +1,82 @@
+{
+  "version": "1.1.0",
+  "settings": {
+    "model": "gpt-5.4-2026-03-05-community-agents",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 100,
+    "mode": "standard"
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "case_details": {
+        "type": "string"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "string",
+        "description": "Output content"
+      },
+      "name": {
+        "type": "string"
+      },
+      "flight": {
+        "type": "string"
+      },
+      "issue": {
+        "type": "string"
+      },
+      "ce": {
+        "type": "string"
+      },
+      "amt": {
+        "type": "integer"
+      }
+    }
+  },
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "type": "lowCode",
+  "guardrails": [],
+  "projectId": "adcd1f62-82df-4d68-8199-a3ea2c3b4397",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an Airline Compensation Evaluation Agent.  \nYou must always check the external context (rules, regulations, compensation policies) provided separately.  \nDo not assume rules yourself — always validate from the context.  \nYour job is to:  \n1. Extract passenger details, flight info, issue type (delay, cancellation, baggage, etc.) from the input.  \n2. Check the context for the compensation rules.  \n3. Return structured output including passenger details, confirmed compensation, and explanation.  \n\nRules:\n1. Only use information available in the JSON.  \n2. If a query cannot be fully answered from the JSON, respond with the best possible answer related to amount mentioned in user input.  \n3. Do not assume, guess, or fabricate answers.  \n4. Always return the most precise compensation rule that matches the user’s query with related to the amount.  ",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are an Airline Compensation Evaluation Agent.  \nYou must always check the external context (rules, regulations, compensation policies) provided separately.  \nDo not assume rules yourself — always validate from the context.  \nYour job is to:  \n1. Extract passenger details, flight info, issue type (delay, cancellation, baggage, etc.) from the input.  \n2. Check the context for the compensation rules.  \n3. Return structured output including passenger details, confirmed compensation, and explanation.  \n\nRules:\n1. Only use information available in the JSON.  \n2. If a query cannot be fully answered from the JSON, respond with the best possible answer related to amount mentioned in user input.  \n3. Do not assume, guess, or fabricate answers.  \n4. Always return the most precise compensation rule that matches the user’s query with related to the amount.  "
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Here is the passenger’s case extracted from the airline document/email:  \n\n{{input.case_details}}\n\nPlease check the external context for rules and calculate how much compensation this passenger should get.  \nReturn a clear structured response for the customer email including:  \n- Name : <name>\n- Flight : <flight>\n- Issue type : <issue>\n- Compensation eligibility : <ce>\n- amount : <amt>\n- Brief explanation (as per rules from context) : <content>",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Here is the passenger’s case extracted from the airline document/email:  \n\n"
+        },
+        {
+          "type": "variable",
+          "rawString": "input.case_details"
+        },
+        {
+          "type": "simpleText",
+          "rawString": "\n\nPlease check the external context for rules and calculate how much compensation this passenger should get.  \nReturn a clear structured response for the customer email including:  \n- Name : <name>\n- Flight : <flight>\n- Issue type : <issue>\n- Compensation eligibility : <ce>\n- amount : <amt>\n- Brief explanation (as per rules from context) : <content>"
+        }
+      ]
+    }
+  ]
+}

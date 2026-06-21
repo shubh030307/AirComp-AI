@@ -1,0 +1,23 @@
+{
+  "DocVersion": "1.0.0",
+  "StudioMinVersion": "2025.04.0",
+  "SolutionId": "6bb65d38-13cd-405d-d673-08decdd794b8",
+  "Projects": [
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "Extract Passenger Details/project.uiproj",
+      "Id": "60f7f8e5-5f82-4877-b062-4f7e54190b9f"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "Airline Compensation Agent/project.uiproj",
+      "Id": "673e4ebd-7353-4ea4-807b-02c7656d599b"
+    },
+    {
+      "Type": "Process",
+      "ProjectRelativePath": "RPA Integration with Airline/project.uiproj",
+      "Id": "1c99a305-20d3-426c-ab94-8103151c52bc"
+    }
+  ],
+  "AutomationHubIdeaUrl": null
+}

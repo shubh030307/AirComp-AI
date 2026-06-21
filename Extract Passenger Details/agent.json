@@ -1,0 +1,67 @@
+{
+  "version": "1.1.0",
+  "settings": {
+    "model": "gpt-5.4-2026-03-05-community-agents",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 25,
+    "mode": "standard"
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "pdfText": {
+        "type": "string"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "pnr": {
+        "type": "string",
+        "description": "Output content"
+      }
+    }
+  },
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "type": "lowCode",
+  "guardrails": [],
+  "projectId": "c5cf8491-3c26-49f2-a22b-74dc509ac939",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an assistant that extracts the Passenger Name Record/Confirmation Number (PNR) from plain text documents.\nThe PNR is usually an alphanumeric code such as CMP123456 or AI789654.\nAlways answer only with the PNR if found.\nIf not found, return \"Not Found\".\nDo not guess or generate fake PNRs.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are an assistant that extracts the Passenger Name Record/Confirmation Number (PNR) from plain text documents.\nThe PNR is usually an alphanumeric code such as CMP123456 or AI789654.\nAlways answer only with the PNR if found.\nIf not found, return \"Not Found\".\nDo not guess or generate fake PNRs."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Here is the extracted text from the passenger’s PDF:\n\n{{input.pdfText}}\n\nPlease extract the required field and return it in the exact plain text format.\nReturn the output in this plain text format (not JSON):  \n\nPNR: <pnr>  \n",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Here is the extracted text from the passenger’s PDF:\n\n"
+        },
+        {
+          "type": "variable",
+          "rawString": "input.pdfText"
+        },
+        {
+          "type": "simpleText",
+          "rawString": "\n\nPlease extract the required field and return it in the exact plain text format.\nReturn the output in this plain text format (not JSON):  \n\nPNR: <pnr>  \n"
+        }
+      ]
+    }
+  ]
+}
